@@ -26,7 +26,7 @@ with open(pdf_file, "rb") as f:
     )
 
 # QR code
-st.sidebar.image("qr_code.jpeg", caption="Escaneie para acessar meu CV", use_container_width=True)
+st.sidebar.image("qrcode.png", caption="Escaneie para acessar meu CV", use_container_width=True)
 # coloque o arquivo qr_code.png na mesma pasta do app
 
 # ------------------------
@@ -43,3 +43,4 @@ pdf_display = f'''
 '''
 
 st.markdown(pdf_display, unsafe_allow_html=True)
+
