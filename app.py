@@ -9,33 +9,16 @@ st.set_page_config(
 
 st.markdown("""
     <style>
-    /* Sidebar */
-    [data-testid="stSidebar"] {
+    /* Cor de fundo da sidebar */
+    .css-1d391kg {
         background-color: #f0f2f6;
         padding: 20px;
         border-radius: 10px;
     }
-
     /* Título da sidebar */
-    .css-1d391kg h2, .css-1d391kg h3 {
+    .css-1v3fvcr h2 {
         color: #2f4f4f;
         font-weight: bold;
-    }
-
-    /* PDF container centralizado */
-    .pdf-container {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-        padding: 5px;
-    }
-
-    /* iframe responsivo */
-    iframe {
-        width: 100% !important;
-        height: 95vh;
-        border: 2px solid #ddd;
-        border-radius: 10px;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -59,12 +42,12 @@ with open(pdf_file, "rb") as f:
     base64_pdf = base64.b64encode(f.read()).decode('utf-8')
 
 pdf_display = f'''
-<div class="pdf-container">
+<div style="display: flex; justify-content: center; margin-top: 10px;">
     <iframe 
-        src="data:application/pdf;base64,{base64_pdf}">
+        src="data:application/pdf;base64,{base64_pdf}" 
+        style="width: 90%; height: 95vh; border: 2px solid #ddd; border-radius: 10px;">
     </iframe>
 </div>
 '''
 
 st.markdown(pdf_display, unsafe_allow_html=True)
-
