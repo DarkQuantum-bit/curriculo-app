@@ -9,21 +9,40 @@ st.set_page_config(
 
 st.markdown("""
     <style>
-    /* Cor de fundo da sidebar */
-    .css-1d391kg {
+    /* Sidebar */
+    [data-testid="stSidebar"] {
         background-color: #f0f2f6;
         padding: 20px;
         border-radius: 10px;
     }
+
     /* Título da sidebar */
-    .css-1v3fvcr h2 {
+    .css-1d391kg h2, .css-1d391kg h3 {
         color: #2f4f4f;
         font-weight: bold;
+    }
+
+    /* PDF container centralizado */
+    .pdf-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        padding: 5px;
+    }
+
+    /* iframe responsivo */
+    iframe {
+        width: 100% !important;
+        height: 95vh;
+        border: 2px solid #ddd;
+        border-radius: 10px;
     }
     </style>
 """, unsafe_allow_html=True)
 
 st.sidebar.title("📄 Currículo")
+st.sidebar.markdown("Confira meu currículo ou baixe-o para seu dispositivo.")
+
 # Botão de download
 pdf_file = "CV.pdf"
 with open(pdf_file, "rb") as f:
@@ -41,10 +60,9 @@ with open(pdf_file, "rb") as f:
     base64_pdf = base64.b64encode(f.read()).decode('utf-8')
 
 pdf_display = f'''
-<div style="display: flex; justify-content: center; margin-top: 10px;">
+<div class="pdf-container">
     <iframe 
-        src="data:application/pdf;base64,{base64_pdf}" 
-        style="width: 90%; height: 95vh; border: 2px solid #ddd; border-radius: 10px;">
+        src="data:application/pdf;base64,{base64_pdf}">
     </iframe>
 </div>
 '''
