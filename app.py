@@ -32,8 +32,8 @@ st.markdown(f"""
     style="width:95%; height:95vh; border:2px solid #ccc; border-radius:15px;"
   ></iframe>
   <p style="text-align:center; margin-top:10px;">
-    📱 Em dispositivos móveis, pode ser necessário abrir o PDF no aplicativo nativo: 
     <a href="{pdf_file}" target="_blank">Abrir PDF</a>
   </p>
 </div>
 """, unsafe_allow_html=True)
+
