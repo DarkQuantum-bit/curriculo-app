@@ -11,27 +11,11 @@ st.set_page_config(
 )
 
 # ------------------------
-# Estilo customizado
+# Estilo seguro
 # ------------------------
 st.markdown("""
     <style>
-    /* Sidebar */
-    [data-testid="stSidebar"] {
-        background-color: #f0f2f6;
-        padding: 25px;
-        border-radius: 15px;
-        box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
-    }
-
-    /* Título da sidebar */
-    .css-1d391kg h2, .css-1d391kg h3 {
-        color: #2f4f4f;
-        font-weight: 700;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    /* Botão de download */
+    /* Botão de download da sidebar */
     div.stDownloadButton > button {
         background-color: #4a90e2;
         color: white;
@@ -47,7 +31,7 @@ st.markdown("""
         cursor: pointer;
     }
 
-    /* PDF container com fundo suave */
+    /* Container do PDF */
     .pdf-container {
         display: flex;
         justify-content: center;
@@ -55,14 +39,21 @@ st.markdown("""
         padding: 10px;
         background: linear-gradient(to bottom right, #ffffff, #e6f0ff);
         border-radius: 15px;
+        box-shadow: 4px 4px 15px rgba(0,0,0,0.1);
     }
 
+    /* iframe do PDF */
     iframe {
         width: 95% !important;
         height: 95vh;
         border: 2px solid #ccc;
         border-radius: 15px;
-        box-shadow: 4px 4px 15px rgba(0,0,0,0.1);
+    }
+
+    /* QR code na sidebar */
+    .sidebar-image img {
+        border-radius: 10px;
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
     }
     </style>
 """, unsafe_allow_html=True)
@@ -83,8 +74,10 @@ with open(pdf_file, "rb") as f:
         mime="application/pdf"
     )
 
-# QR code
+# QR code com classe específica
+st.sidebar.markdown('<div class="sidebar-image">', unsafe_allow_html=True)
 st.sidebar.image("qrcode.png", caption="Escaneie para acessar meu CV", use_container_width=True)
+st.sidebar.markdown('</div>', unsafe_allow_html=True)
 
 # ------------------------
 # PDF em tela cheia
