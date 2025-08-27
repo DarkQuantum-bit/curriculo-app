@@ -59,7 +59,7 @@ st.sidebar.markdown("Confira meu currículo ou baixe-o para seu dispositivo.")
 pdf_file = "CV.pdf"
 with open(pdf_file, "rb") as f:
     st.sidebar.download_button(
-        label="⬇️ Baixar Currículo",
+        label="⬇️ Baixar currículo",
         data=f,
         file_name="Carlos_Ribeiro_CV.pdf",
         mime="application/pdf"
@@ -82,4 +82,5 @@ pdf_display = f'''
 '''
 
 st.markdown(pdf_display, unsafe_allow_html=True)
+
 
