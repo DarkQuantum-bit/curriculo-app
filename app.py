@@ -15,13 +15,6 @@ st.set_page_config(
 # ------------------------
 st.markdown("""
     <style>
-    /* Fundo do app com gradiente suave */
-    .stApp {
-        background: linear-gradient(to bottom right, #ffffff, #e6f0ff);
-        color: #1f1f1f;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
     /* Sidebar */
     [data-testid="stSidebar"] {
         background-color: #f0f2f6;
@@ -54,12 +47,14 @@ st.markdown("""
         cursor: pointer;
     }
 
-    /* PDF container */
+    /* PDF container com fundo suave */
     .pdf-container {
         display: flex;
         justify-content: center;
         margin-top: 15px;
         padding: 10px;
+        background: linear-gradient(to bottom right, #ffffff, #e6f0ff);
+        border-radius: 15px;
     }
 
     iframe {
@@ -69,7 +64,6 @@ st.markdown("""
         border-radius: 15px;
         box-shadow: 4px 4px 15px rgba(0,0,0,0.1);
     }
-
     </style>
 """, unsafe_allow_html=True)
 
