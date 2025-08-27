@@ -41,7 +41,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.sidebar.title("📄 Currículo")
-st.sidebar.markdown("Confira meu currículo ou baixe-o para seu dispositivo.")
 
 # Botão de download
 pdf_file = "CV.pdf"
@@ -68,3 +67,4 @@ pdf_display = f'''
 '''
 
 st.markdown(pdf_display, unsafe_allow_html=True)
+
