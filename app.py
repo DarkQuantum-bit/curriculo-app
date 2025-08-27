@@ -1,18 +1,12 @@
 import streamlit as st
 import base64
 
-# ------------------------
-# Configurações da página
-# ------------------------
 st.set_page_config(
     page_title="Currículo - Carlos Gabriel Ribeiro",
     page_icon=":mortar_board:",
     layout="wide"
 )
 
-# ------------------------
-# Estilo seguro
-# ------------------------
 st.markdown("""
     <style>
     /* Botão de download da sidebar */
@@ -58,9 +52,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# ------------------------
-# Barra lateral
-# ------------------------
 st.sidebar.title("📄 Currículo")
 st.sidebar.markdown("Confira meu currículo ou baixe-o para seu dispositivo.")
 
@@ -79,9 +70,6 @@ st.sidebar.markdown('<div class="sidebar-image">', unsafe_allow_html=True)
 st.sidebar.image("qrcode.png", caption="Escaneie para acessar meu CV", use_container_width=True)
 st.sidebar.markdown('</div>', unsafe_allow_html=True)
 
-# ------------------------
-# PDF em tela cheia
-# ------------------------
 with open(pdf_file, "rb") as f:
     base64_pdf = base64.b64encode(f.read()).decode('utf-8')
 
@@ -94,3 +82,4 @@ pdf_display = f'''
 '''
 
 st.markdown(pdf_display, unsafe_allow_html=True)
+
