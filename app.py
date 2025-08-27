@@ -55,8 +55,9 @@ st.markdown("""
 st.sidebar.title("📄 Currículo")
 st.sidebar.markdown("Confira meu currículo ou baixe-o para seu dispositivo.")
 
-# Botão de download
 pdf_file = "CV.pdf"
+
+# Botão de download
 with open(pdf_file, "rb") as f:
     st.sidebar.download_button(
         label="⬇️ Baixar Currículo",
@@ -65,11 +66,18 @@ with open(pdf_file, "rb") as f:
         mime="application/pdf"
     )
 
-# QR code com classe específica
+# Botão para abrir PDF em nova aba (mobile-friendly)
+st.sidebar.markdown(
+    f'<a href="{pdf_file}" target="_blank">'
+    '📖 Abrir Currículo no Navegador</a>', unsafe_allow_html=True
+)
+
+# QR code
 st.sidebar.markdown('<div class="sidebar-image">', unsafe_allow_html=True)
 st.sidebar.image("qrcode.png", caption="Escaneie para acessar meu CV", use_container_width=True)
 st.sidebar.markdown('</div>', unsafe_allow_html=True)
 
+# Preparar PDF para visualização em iframe
 with open(pdf_file, "rb") as f:
     base64_pdf = base64.b64encode(f.read()).decode('utf-8')
 
@@ -82,4 +90,3 @@ pdf_display = f'''
 '''
 
 st.markdown(pdf_display, unsafe_allow_html=True)
-
