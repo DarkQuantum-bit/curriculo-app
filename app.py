@@ -1,12 +1,14 @@
 import streamlit as st
 import base64
 
+# Configuração da página
 st.set_page_config(
     page_title="Currículo - Carlos Gabriel Ribeiro",
     page_icon=":mortar_board:",
     layout="wide"
 )
 
+# Estilo customizado
 st.markdown("""
     <style>
     /* Botão de download da sidebar */
@@ -52,9 +54,11 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# Sidebar
 st.sidebar.title("📄 Currículo")
 st.sidebar.markdown("Confira meu currículo ou baixe-o para seu dispositivo.")
 
+# Arquivo PDF
 pdf_file = "CV.pdf"
 
 # Botão de download
@@ -66,27 +70,20 @@ with open(pdf_file, "rb") as f:
         mime="application/pdf"
     )
 
-# Botão para abrir PDF em nova aba (mobile-friendly)
-st.sidebar.markdown(
-    f'<a href="{pdf_file}" target="_blank">'
-    '📖 Abrir Currículo no Navegador</a>', unsafe_allow_html=True
-)
-
-# QR code
+# QR code na sidebar
 st.sidebar.markdown('<div class="sidebar-image">', unsafe_allow_html=True)
 st.sidebar.image("qrcode.png", caption="Escaneie para acessar meu CV", use_container_width=True)
 st.sidebar.markdown('</div>', unsafe_allow_html=True)
 
-# Preparar PDF para visualização em iframe
+# Preparar PDF para visualização no iframe
 with open(pdf_file, "rb") as f:
     base64_pdf = base64.b64encode(f.read()).decode('utf-8')
 
 pdf_display = f'''
 <div class="pdf-container">
-    <iframe 
-        src="data:application/pdf;base64,{base64_pdf}">
-    </iframe>
+    <iframe src="data:application/pdf;base64,{base64_pdf}"></iframe>
 </div>
 '''
 
+# Exibir PDF no corpo principal
 st.markdown(pdf_display, unsafe_allow_html=True)
